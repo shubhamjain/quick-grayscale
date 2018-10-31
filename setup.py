@@ -8,9 +8,9 @@ Usage:
 from setuptools import setup
 
 APP = ["quick-gray.py"]
-DATA_FILES = ["./assets/"]
+DATA_FILES = ["status-bar-logo.png"]
 OPTIONS = {
-    "iconfile":"./assets/qg.icns",
+    "iconfile":"./assets/gq.icns",
     "plist": {
         "LSUIElement": True,
     },

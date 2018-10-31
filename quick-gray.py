@@ -47,7 +47,7 @@ def toggle_grayscale(menuItem):
         rumps.alert(title="Permissions Required",
             message="Quick Grayscale needs accessibility permissions to modify the Grayscale display setting.\n\n" + 
                 "Please enable them for the app" + 
-                " by going to Security & Privacy > Privacy > Accessiblity (on the left pane) and allow Quick Grayscale.")
+                " by going to Security & Privacy > Privacy > Accessiblity (on the left pane) and allowing Quick Grayscale.")
     elif (error_code == "1743"):
         quit_system_preferences()
         rumps.alert(title="Permissions Required",
@@ -57,9 +57,9 @@ def toggle_grayscale(menuItem):
 
         
 if __name__ == "__main__":
-    app = rumps.App("Quick Grayscale", icon="./assets/qg.iconset/icon_32x32.png")
+    app = rumps.App("Quick Grayscale", icon="./status-bar-logo.png")
     menuItem = rumps.MenuItem ("Enable Grayscale", callback=toggle_grayscale)
-    menuItem.state = is_grayscale
+    menuItem.state = is_grayscale()
 
     app.menu = [
         menuItem
