@@ -1,4 +1,4 @@
 build/*
-dist/*
+dist/QuickGrayscale.app/
 .DS_Store
 .eggs/*
