@@ -8,11 +8,18 @@ Usage:
 from setuptools import setup
 
 APP = ["quick-gray.py"]
+APP_NAME = "QuickGrayscale"
+
 DATA_FILES = ["status-bar-logo.png"]
 OPTIONS = {
     "iconfile":"./assets/gq.icns",
     "plist": {
-        "LSUIElement": True,
+        "CFBundleName": "QuickGrayscale",
+        "CFBundleDisplayName": "Quick Grayscale",
+        "CFBundleIdentifier": "com.shubham.quickgrayscale",
+        "CFBundleVersion": "0.1.0",
+        "CFBundleShortVersionString": "0.1.0",
+        "LSUIElement": True # Launch on startup
     },
     "packages": ["rumps"]
 }
