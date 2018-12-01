@@ -9,8 +9,12 @@ def is_grayscale():
 
     p = Popen(["plutil", "-p", ua_file], stdin=PIPE, stdout=PIPE, stderr=PIPE)    
     output = p.communicate()[0]
+    regex_out = re.findall(r"\"grayscale\" => ([0-9])", output.decode("utf8"))
 
-    return re.findall(r"\"grayscale\" => ([0-9])", output.decode("utf8"))[0] == "1"
+    if (len(regex_out) == 0):
+        return False
+
+    return regex_out[0] == "1"
 
 def quit_system_preferences():
     call(["osascript", "-e", """
