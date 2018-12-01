@@ -17,8 +17,8 @@ OPTIONS = {
         "CFBundleName": "QuickGrayscale",
         "CFBundleDisplayName": "Quick Grayscale",
         "CFBundleIdentifier": "com.shubham.quickgrayscale",
-        "CFBundleVersion": "0.1.0",
-        "CFBundleShortVersionString": "0.1.0",
+        "CFBundleVersion": "0.1.1",
+        "CFBundleShortVersionString": "0.1.1",
         "LSUIElement": True # Launch on startup
     },
     "packages": ["rumps"]
