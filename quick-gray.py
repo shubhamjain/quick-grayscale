@@ -23,6 +23,8 @@ def quit_system_preferences():
         end tell"""])
 
 def toggle_grayscale(menuItem):
+    ## @TODO: There should be a better way instead of nested try..on error statements
+    ## but right now, I have zero clue. 
     p = Popen(["osascript", "-e", """tell application "System Preferences"
         activate
         reveal anchor "Seeing_Display" of pane id "com.apple.preference.universalaccess"
@@ -30,9 +32,17 @@ def toggle_grayscale(menuItem):
         delay .5
         tell application "System Events" to tell process "System Preferences"
             try
-                click checkbox "Use grayscale" of group 1 of window "Accessibility"
+                try
+                    try
+                        click checkbox "Use grayscale" of group 1 of window "Accessibility"
+                    on error
+                        click checkbox "Use greyscale" of group 1 of window "Accessibility"
+                    end try
+                on error
+                    click checkbox "Use grayscale" of window "Accessibility"
+                end try
             on error
-                click checkbox "Use greyscale" of group 1 of window "Accessibility"
+                click checkbox "Use grayscale" of window "Accessibility"
             end try
         end tell
         tell application "System Preferences"
