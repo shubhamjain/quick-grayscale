@@ -22,6 +22,12 @@ def quit_system_preferences():
             quit
         end tell"""])
 
+def is_dark_mode():
+    p = Popen(["defaults", "read", "-g", "AppleInterfaceStyle"], stdin=PIPE, stdout=PIPE, stderr=PIPE)    
+    output = p.communicate()[0]
+    
+    return "Dark" in output.decode("utf8")
+
 def toggle_grayscale(menuItem):
     ## @TODO: There should be a better way instead of nested try..on error statements
     ## but right now, I have zero clue. 
@@ -71,7 +77,11 @@ def toggle_grayscale(menuItem):
 
         
 if __name__ == "__main__":
-    app = rumps.App("Quick Grayscale", icon="./status-bar-logo.png")
+    if (is_dark_mode()):
+        app = rumps.App("Quick Grayscale", icon="./status-bar-logo--dark.png")
+    else:
+        app = rumps.App("Quick Grayscale", icon="./status-bar-logo.png")
+
     menuItem = rumps.MenuItem ("Enable Grayscale", callback=toggle_grayscale)
     menuItem.state = is_grayscale()
 
